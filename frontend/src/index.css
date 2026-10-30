@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --maroon: #641b25;
+  --burgundy: #42121b;
+  --gold: #c5a15b;
+  --gold-soft: #d9bf87;
+  --ivory: #fff8ec;
+  --terracotta: #b85c38;
+  --saffron: #d99a35;
+  --text: #42121b;
+  --muted: #8a5a44;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  background-color: var(--ivory);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--burgundy);
+}
+
+.font-serif-display {
+  font-family: "Cormorant Garamond", "Cardo", Georgia, serif;
+  font-feature-settings: "liga" 1, "dlig" 1;
+}
+
+/* Eyebrow label */
+.eyebrow {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* Gold hairline divider with centre motif */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--gold);
+}
+.gold-divider::before,
+.gold-divider::after {
+  content: "";
+  height: 1px;
+  width: 90px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold) 50%,
+    transparent
+  );
+}
+
+/* Subtle paisley watermark (used as background-image on sections) */
+.paisley-bg {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='%23C5A15B' stroke-opacity='0.12' stroke-width='1'><path d='M60 180 C 20 120, 60 60, 120 60 C 180 60, 220 110, 180 160 C 150 196, 100 200, 90 170 C 85 150, 110 140, 120 150'/><circle cx='120' cy='100' r='4'/><circle cx='140' cy='120' r='3'/><circle cx='105' cy='135' r='2.5'/></svg>");
+  background-size: 240px 240px;
+  background-repeat: repeat;
+}
+
+.mandala-bg {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' fill='none' stroke='%23C5A15B' stroke-opacity='0.10'><circle cx='200' cy='200' r='180' stroke-width='1'/><circle cx='200' cy='200' r='140' stroke-width='1'/><circle cx='200' cy='200' r='100' stroke-width='1'/><g stroke-width='1'><path d='M200 20 L200 380'/><path d='M20 200 L380 200'/><path d='M70 70 L330 330'/><path d='M70 330 L330 70'/></g></svg>");
+  background-size: 520px 520px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Diya glow effect for CTAs & key elements */
+.diya-glow {
+  box-shadow:
+    0 0 0 1px rgba(197, 161, 91, 0.5),
+    0 0 24px rgba(217, 154, 53, 0.35),
+    0 10px 30px rgba(66, 18, 27, 0.25);
+}
+
+/* Thin ornamental double border */
+.gold-frame {
+  position: relative;
+  border: 1px solid rgba(197, 161, 91, 0.6);
+  outline: 1px solid rgba(197, 161, 91, 0.25);
+  outline-offset: 4px;
+}
+
+/* Entrance animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fadeUp 0.9s ease-out both;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 0.95;
+    filter: brightness(1);
+  }
+  40% {
+    opacity: 0.82;
+    filter: brightness(1.08);
+  }
+  70% {
+    opacity: 0.98;
+    filter: brightness(0.98);
+  }
+}
+.flame-flicker {
+  animation: flicker 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
